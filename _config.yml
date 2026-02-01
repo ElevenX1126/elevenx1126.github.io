@@ -7,7 +7,7 @@ title: 陈十一的小天地
 subtitle: ''
 description: ''
 keywords:
-author: ElevenX1126
+author: Eleven
 language: zh-CN
 timezone: Asia/Shanghai
 
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
@@ -67,6 +67,14 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  大模型: llm
+  机器学习: ml
+  后端: backend
+  摄影集: gallery
+  经验总结: insights
+  工具使用: tools
+  黑科技: hacks
+  随笔: essays
 tag_map:
 
 # Metadata elements

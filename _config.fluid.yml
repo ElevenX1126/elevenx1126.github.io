@@ -18,12 +18,11 @@
 
 # 用于浏览器标签的图标
 # Icon for browser tab
-favicon: /img/fluid.png
+favicon: /img/dog.png
 
 # 用于苹果设备的图标
 # Icon for Apple touch
-apple_touch_icon: /img/fluid.png
-
+apple_touch_icon: /img/dog.png
 # 浏览器标签页中的标题分隔符，效果：文章名 - 站点名
 # Title separator in browser tab, eg: article - site
 tab_title_separator: " - "
@@ -237,7 +236,9 @@ custom_js:
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
-custom_css:
+custom_css: 
+- /css/redbook.css
+- /css/tiktok.css
 
 # 网页访问统计
 # Analysis of website visitors
@@ -314,7 +315,7 @@ web_analytics:
 # Canonical, to specify a canonical URL for Google Search, need to set up `url: http://yourdomain.com` in hexo _config.yml
 # See: https://support.google.com/webmasters/answer/139066
 canonical:
-  enable: false
+  enable: true
 
 # 对页面中的图片和评论插件进行懒加载处理，可见范围外的元素不会提前加载
 # Lazy loading of images and comment plugin on the page
@@ -348,7 +349,7 @@ iconfont: //at.alicdn.com/t/c/font_1736178_k526ubmyhba.css
 navbar:
   # 导航栏左侧的标题，为空则按 hexo config 中 `title` 显示
   # The title on the left side of the navigation bar. If empty, it is based on `title` in hexo config
-  blog_title: "Fluid"
+  blog_title: "🍀 陈十一的小天地"
 
   # 导航栏毛玻璃特效，实验性功能，可能会造成页面滚动掉帧和抖动，部分浏览器不支持会自动不生效
   # Navigation bar frosted glass special animation. It is an experimental feature
@@ -372,7 +373,7 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -446,9 +447,9 @@ footer:
   # 页脚第一行文字的 HTML，建议保留 Fluid 的链接，用于向更多人推广本主题
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a>
     <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Adapted from Fluid</span></a>
   '
 
   # 展示网站的 PV、UV 统计数
@@ -482,7 +483,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /img/default.png
+  banner_img: /img/bg/home.png
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -501,7 +502,7 @@ index:
 
     # 为空则按 hexo config.subtitle 显示，支持列表格式来实现随机选择一行文字显示
     # If empty, text based on `subtitle` in hexo config, support list format to random selection of a row for display
-    text: "An elegant Material-Design theme for Hexo"
+    text: "真正的英雄主义<br>是在看清自己的狼狈之后，依然愿意拥抱自己"
 
     # 通过 API 接口作为首页副标题的内容，必须返回的是 JSON 格式，如果请求失败则按 text 字段显示，该功能必须先开启 typing 打字机功能
     # Subtitle of the homepage through the API, must be returned a JSON. If the request fails, it will be displayed in `text` value. This feature must first enable the typing animation
@@ -528,7 +529,7 @@ index:
   # 自动截取文章摘要
   # Auto extract post
   auto_excerpt:
-    enable: true
+    enable: false
 
   # 打开文章的标签方式
   # The browser tag to open the post
@@ -554,7 +555,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: /img/bg/1.png
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -568,7 +569,7 @@ post:
     # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
     # Author, based on `author` field in front-matter, if not set, based on `author` value in hexo config
     author:
-      enable: false
+      enable: true
 
     # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
     # Post date, based on `date` field in front-matter, if not set, based on create date of .md file
@@ -577,7 +578,7 @@ post:
       # 格式参照 ISO-8601 日期格式化
       # ISO-8601 date format
       # See: http://momentjs.cn/docs/#/parsing/string-format/
-      format: "LL a"
+      format: "YYYY/MM/DD HH:mm"
 
     # 字数统计
     # Word count
@@ -607,21 +608,21 @@ post:
   # 在文章开头显示文章更新时间，该时间默认是 md 文件更新时间，可通过 front-matter 中 `updated` 手动指定（和 date 一样格式）
   # Update date is displayed at the beginning of the post. The default date is the update date of the md file, which can be manually specified by `updated` in front-matter (same format as date)
   updated:
-    enable: false
+    enable: true
 
     # 格式参照 ISO-8601 日期格式化
     # ISO-8601 date format
     # See: http://momentjs.cn/docs/#/parsing/string-format/
-    date_format: "LL a"
+    date_format: "YYYY/MM/DD HH:mm"
 
     # 是否使用相对时间表示，比如："3 天前"
     # If true, it will be a relative time, such as: "3 days ago"
-    relative: false
+    relative: true
 
     # 提示标签类型
     # Note class
     # Options: default | primary | info | success | warning | danger | light
-    note_class: info
+    note_class: success
 
   # 侧边栏展示当前分类下的文章
   # Sidebar of category
@@ -640,11 +641,11 @@ post:
     # 文章的排序字段，前面带减号是倒序，不带减号是正序
     # Sort field for posts, with a minus sign is reverse order
     # Options: date | title | or other field of front-matter
-    post_order_by: "title"
+    post_order_by: "-date"
 
     # 单个分类中折叠展示文章数的最大值，超过限制会显示 More，0 则不限制
     # The maximum number of posts in a single category. If the limit is exceeded, it will be displayed More. If 0 no limit
-    post_limit: 0
+    post_limit: 15
 
   # 侧边栏展示文章目录
   # Table of contents (TOC) in the sidebar
@@ -681,14 +682,14 @@ post:
     # 显示发布日期
     # Show post date
     post_date:
-      enable: true
-      format: "LL"
+      enable: false
+      format: "YYYY/MM/DD HH:mm"
 
     # 显示更新日期
     # Show update date
     update_date:
       enable: false
-      format: "LL"
+      format: "YYYY/MM/DD HH:mm"
 
   # 文章底部上一篇下一篇功能
   # Link to previous/next post
@@ -747,11 +748,11 @@ post:
   # 评论插件
   # Comment plugin
   comments:
-    enable: false
+    enable: true
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
-    type: disqus
+    type: giscus
 
 
 #---------------------------
@@ -892,23 +893,6 @@ cusdis:
   app_id:
   lang: zh-cn
 
-# Giscus
-# 基于 GitHub Discussions，类似于 Utterances
-# Based on GitHub Discussions, similar to Utterances
-# See: https://giscus.app/
-giscus:
-  repo:
-  repo-id:
-  category:
-  category-id:
-  theme-light: light
-  theme-dark: dark
-  mapping: pathname
-  reactions-enabled: 1
-  emit-metadata: 0
-  input-position: top
-  lang: zh-CN
-
 # Discuss
 # 多平台、多数据库、自托管、免费开源评论系统
 # Self-hosted, small size, multi-platform, multi-database, free and open source commenting system
@@ -917,14 +901,32 @@ discuss:
   serverURLs:
   path: window.location.pathname
 
+# Giscus
+# 基于 GitHub Discussions，类似于 Utterances
+# Based on GitHub Discussions, similar to Utterances
+# See: https://giscus.app/
+giscus:
+  repo: ElevenX1126/elevenx1126.github.io
+  repo-id: R_kgDOQaVs2g
+  category: Announcements
+  category-id: DIC_kwDOQaVs2s4C1ufZ
+  theme-light: light
+  theme-dark: dark
+  mapping: pathname
+  reactions-enabled: 1
+  emit-metadata: 0
+  input-position: top
+  lang: zh-CN
+
+
 
 #---------------------------
 # 归档页
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
-  banner_img_height: 60
+  banner_img: /img/bg/2.png
+  banner_img_height: 70
   banner_mask_alpha: 0.3
 
 
@@ -934,14 +936,14 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/default.png
-  banner_img_height: 60
+  banner_img: /img/bg/3.png
+  banner_img_height: 70
   banner_mask_alpha: 0.3
 
   # 分类的排序字段，前面带减号是倒序，不带减号是正序
   # Sort field for categories, with a minus sign is reverse order
   # Options: length | name
-  order_by: "-length"
+  order_by: "name"
 
   # 层级的折叠深度，0 是全部折叠，大于 0 后如果存在子分类则默认展开
   # Collapse depth. If 0, all posts collapsed. If greater than 0, it will be expanded by default if there are subcategories
@@ -963,8 +965,8 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
-  banner_img_height: 80
+  banner_img: /img/bg/5.png
+  banner_img_height: 70
   banner_mask_alpha: 0.3
   tagcloud:
     min_font: 15
@@ -980,18 +982,19 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/default.png
-  banner_img_height: 60
+  banner_img: /img/bg/4.png
+  banner_img_height: 70
   banner_mask_alpha: 0.3
-  avatar: /img/avatar.png
-  name: "Fluid"
-  intro: "An elegant theme for Hexo"
+  avatar: /img/avatar.jpg
+  name: "Eleven"
+  intro: "喜欢幻想，略微强迫症，希望有第181秒的热情"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, the icon is no longer a link, but a hovering QR code
   icons:
-    - { class: "iconfont icon-github-fill", link: "https://github.com", tip: "GitHub" }
-    - { class: "iconfont icon-douban-fill", link: "https://douban.com", tip: "豆瓣" }
-    - { class: "iconfont icon-wechat-fill", qrcode: "/img/favicon.png" }
+    - { class: "iconfont icon-github-fill", link: "https://github.com/ElevenX1126", tip: "GitHub" }
+    - { class: "iconfont icon-mail", link: "mailto:xuduoduo1126@gmail.com", tip: "Email" }
+    - { class: "iconfont icon-xiaohongshu", qrcode: "/img/redbook.jpg" }
+    - { class: "iconfont icon-douyin", qrcode: "/img/douyin.jpg" }
 
 
 #---------------------------
@@ -1003,7 +1006,7 @@ about:
 #---------------------------
 page:
   banner_img: /img/default.png
-  banner_img_height: 60
+  banner_img_height: 70
   banner_mask_alpha: 0.3
 
 
@@ -1014,7 +1017,7 @@ page:
 page404:
   enable: true
   banner_img: /img/default.png
-  banner_img_height: 85
+  banner_img_height: 70
   banner_mask_alpha: 0.3
   # 重定向到首页的延迟(毫秒)
   # Delay in redirecting to home page (milliseconds)
@@ -1028,7 +1031,7 @@ page404:
 links:
   enable: true
   banner_img: /img/default.png
-  banner_img_height: 60
+  banner_img_height: 70
   banner_mask_alpha: 0.3
   # 友链的成员项
   # Member item of page
@@ -1059,17 +1062,25 @@ links:
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
   custom:
-    enable: false
-    content: '<hr><p>在下方留言申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：Fluid</li><li>简介：Fluid 主题官方博客</li><li>链接：https://hexo.fluid-dev.com</li><li>图片：https://hexo.fluid-dev.com/img/favicon.png</li></ul>'
+    enable: true
+    content: '<div style="padding: 20px; background-color: rgba(66, 185, 131, 0.1); border-left: 5px solid #42b983; border-radius: 8px; margin: 20px 0;">
+  <p style="font-size: 1.2rem; font-weight: bold; color: #2c3e50; margin-bottom: 10px;">
+    欢迎新朋友！ 😍😍😍
+  </p>
+  <p style="color: #555; line-height: 1.6;">
+    很高兴在这里遇见你！如果你想与我交换友链，请通过 
+    <a href="mailto:xuduoduo1126@gmail.com" style="color: #42b983; text-decoration: none; border-bottom: 1px dashed #42b983;">邮件</a> 
+    或者在下方 <b>评论区</b> 告知我哦！🥰🥰🥰
+  </p> </div>'
 
   # 评论插件
   # Comment plugin
   comments:
-    enable: false
+    enable: true
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
-    type: disqus
+    type: giscus
 
 
 #---------------------------
@@ -1132,3 +1143,4 @@ static_prefix:
   hint: https://lib.baomitu.com/hint.css/2.7.0/
 
   moment: https://lib.baomitu.com/moment.js/2.29.4/
+

@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 5121213 */
+  src:
+    url("fonts/font_5121213_cwsvp43341g.woff2") format("woff2"),
+    url("fonts/font_5121213_cwsvp43341g.woff") format("woff"),
+    url("fonts/font_5121213_cwsvp43341g.ttf") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xiaohongshu:before {
+  content: "\e657";
+}
