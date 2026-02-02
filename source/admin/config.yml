@@ -4,7 +4,7 @@ backend:
   repo: ElevenX1126/elevenx1126.github.io
   branch: main
   auth_type: implicit
-  app_id: Ov23liOug7FvQWDjcXMl
+  app_id: "Ov23liOug7FvQWDjcXMl"
 media_folder: source/images
 public_folder: /images
 collections:
