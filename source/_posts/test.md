@@ -7,6 +7,7 @@ tags:
   - 人生道理
   - 复盘总结
 category_bar: true   //必填
+math: true
 ---
 
 this is a test
@@ -43,3 +44,9 @@ public:
 {% fold info @title %}
 需要折叠的一段内容，支持 markdown
 {% endfold %}
+
+$Fitness = 1/3 [σ(\Delta loss) + σ(\Delta benchmark) + LLMjudge]$
+
+$E=mc^2$
+
+$\frac{\partial L}{\partial W_{xh}} = \underbrace{\frac{\partial L}{\partial y_2} \frac{\partial y_2}{\partial h_2} \frac{\partial h_2}{\partial W_{xh}}}_{\text{第2步的直接贡献}} + \underbrace{\frac{\partial L}{\partial y_2} \frac{\partial y_2}{\partial h_2} \frac{\partial h_2}{\partial h_1} \frac{\partial h_1}{\partial W_{xh}}}_{\text{倒推回第1步的间接贡献}}$
