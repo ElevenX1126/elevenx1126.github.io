@@ -3,6 +3,7 @@ backend:
   name: github
   repo: ElevenX1126/elevenx1126.github.io
   branch: main
+  auth_type: implicit
 media_folder: source/images
 public_folder: /images
 collections:
