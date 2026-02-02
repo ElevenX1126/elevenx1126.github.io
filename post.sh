@@ -34,12 +34,15 @@ open -a "Typora" "$filepath"
 
 # 5. 等待编辑并同步
 echo "---------------------------------------"
-echo "编写完成后，保存并回到终端按回车 [Enter] 开始同步..."
-read -p "准备好同步了吗？" confirm
+echo "编写完成后，请在 Typora 中保存文件。"
+read -p "是否现在推送到 GitHub? (y/n): " confirm
 
-# 6. Git 同步
-git add .
-git commit -m "feat: publish $title"
-git push origin main
-
-echo "✅ 发布完成！"
+if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+    echo "正在执行 Git 同步..."
+    git add .
+    git commit -m "feat: publish $title"
+    git push origin main
+    echo "✅ 发布完成！"
+else
+    echo "已保存本地草稿，未推送到远端。"
+fi
