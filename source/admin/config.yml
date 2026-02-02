@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: ElevenX1126/elevenx1126.github.io # 你的主仓库
+  branch: main
+media_folder: "source/images" # 图片存储路径
+public_folder: "/images"
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "source/_posts"
+    create: true 
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      # --- 必填项 (Required) ---
+      - { label: "标题", name: "title", widget: "string", required: true }
+      - { label: "日期", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss", required: true }
+      - { label: "分类"
+        name: "categories"
+        widget: "select"
+        multiple: true         # 允许选多个
+        create: true           # 允许用户手动输入并创建新选项（关键点！）
+        options: ["机器学习", "后端", "大模型", "经验总结","工具使用","摄影集","黑科技","随笔"] # 预设一些你最常用的
+        required: true }
+      - { label: "标签"
+        name: "tags"
+        widget: "select"
+        multiple: true 
+        create: true           # 开启后，输入新标签回车即可创建
+        options: ["课内", "磕盐", "人生道理", "碎碎念"]
+        required: true }
+      - { label: "显示分类栏", name: "category_bar", widget: "boolean", default: true, required: true }
+      - { label: "开启数学公式", name: "math", widget: "boolean", default: true, required: true }
+
+      # --- 非必填项 (Optional) ---
+      # 设置 required: false 后，如果不填，生成的 Front-matter 中将不包含此项
+      - { label: "文章封面图", name: "index_img", widget: "string", required: false, help: "不填则不显示封面" }
+      - { label: "页眉大图", name: "banner_img", widget: "string", required: false }
+      - { label: "置顶权重", name: "sticky", widget: "number", required: false, default: 0 }
+      - { label: "完全隐藏", name: "hide", widget: "boolean", required: false, default: false }
+      - { label: "仅归档显示", name: "archive", widget: "boolean", required: false, default: false }
+      - { label: "评论插件", name: "comment", widget: "boolean", required: false, default: true}
+
+      # --- 正文 ---
+      - { label: "正文", name: "body", widget: "markdown", required: true }
