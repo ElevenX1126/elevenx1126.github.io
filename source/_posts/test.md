@@ -52,3 +52,12 @@ $E=mc^2$
 $\frac{\partial L}{\partial W_{xh}} = \underbrace{\frac{\partial L}{\partial y_2} \frac{\partial y_2}{\partial h_2} \frac{\partial h_2}{\partial W_{xh}}}_{\text{第2步的直接贡献}} + \underbrace{\frac{\partial L}{\partial y_2} \frac{\partial y_2}{\partial h_2} \frac{\partial h_2}{\partial h_1} \frac{\partial h_1}{\partial W_{xh}}}_{\text{倒推回第1步的间接贡献}}$
 
 ![](https://cdn.statically.io/gh/ElevenX1126/blog-assets/main/images2026/02/20260202151030.png)
+
+
+
+![](https://cdn.statically.io/gh/ElevenX1126/blog-assets/main/images2026/02/20260202172302.png)
+
+
+
+
+
