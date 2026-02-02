@@ -55,29 +55,44 @@ create_post() {
 
 # 菜单 2：管理文章 (保留 * 标记逻辑)
 manage_posts() {
-    # 获取所有待提交/未推送的文件列表
+# 1. 获取未同步文件列表
     local unpushed_files=$(git status --porcelain "$POSTS_DIR" | awk '{print $2}')
 
-    # 生成带标记的列表 (严格保留原有逻辑)
+    # 2. 生成列表，增加 2>/dev/null 防止 ls 报错
     local list_content=""
-    for file in $(ls -t "$POSTS_DIR"/*.md); do
-        if echo "$unpushed_files" | grep -q "$file"; then
-            list_content="${list_content}* $file\n"
-        else
-            list_content="${list_content}  $file\n"
-        fi
-    done
+    # 检查目录下是否有 .md 文件，防止循环报错
+    if ls "$POSTS_DIR"/*.md >/dev/null 2>&1; then
+        for file in $(ls -t "$POSTS_DIR"/*.md); do
+            if echo "$unpushed_files" | grep -qx "$file"; then
+                list_content="${list_content}* $file\n"
+            else
+                list_content="${list_content}  $file\n"
+            fi
+        done
+    else
+        echo "📭 目录 $POSTS_DIR 中没有找到 Markdown 文章。"
+        sleep 1
+        return
+    fi
 
-    # 使用 fzf 选择文章
-    local selected=$(echo -e "$list_content" | fzf \
-        --header "Ctrl-D:删除 | Ctrl-P:直接发布 | (* 表示有本地改动未推送)" \
+    # 3. 【关键修复】使用 printf 配合 sed 去掉末尾最后一个 \n，防止 fzf 出现空行
+    local clean_list=$(printf "$list_content" | sed '/^$/d')
+
+    # 4. 传给 fzf
+    local selected=$(echo "$clean_list" | fzf \
+        --header "Ctrl-D:删除 | Ctrl-P:发布 | (* 表示有变动)" \
         --expect="ctrl-p,ctrl-d" \
-        --preview "bat --color=always --line-range :15 {-1}" --height 80% --reverse)
+        --preview "bat --color=always --line-range :15 {-1} 2>/dev/null || head -n 15 {-1}" \
+        --height 80% --reverse)
 
-    key=$(echo "$selected" | sed -n '1p')
-    target=$(echo "$selected" | sed -n '2p' | awk '{print $NF}')
+    # 5. 解析结果
+    local key=$(echo "$selected" | sed -n '1p')
+    local target=$(echo "$selected" | sed -n '2p' | awk '{print $NF}')
 
+    # 如果没有选中任何东西（直接按了 ESC），立即退出
     if [ -z "$target" ]; then return; fi
+
+
     local filename=$(basename "$target")
 
     case "$key" in
@@ -86,10 +101,15 @@ manage_posts() {
             echo -e "\n❗ 确定要删除文章吗？: $filename"
             read -p "此操作不可逆，请输入 (y/n): " confirm
             if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+                if git ls-files --error-unmatch "$target" >/dev/null 2>&1; then
                 git rm "$target"
                 git commit -m "fix: delete post $filename"
                 git push origin main
                 echo "✅ GitHub 同步成功。"
+                else
+                    # 未追踪的文件直接物理删除
+                    rm "$target"
+                fi
             else
                 echo "✋ 已取消删除。"
             fi
